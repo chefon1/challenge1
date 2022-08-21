@@ -35,10 +35,13 @@ jobs:
         run: ssh staging "git pull https://github.com/chefon1/challenge1.git || true"
            
       - name: Install
-        run: ssh staging 'cd challenge1 && npm install -y'
+        run: ssh staging 'cd challenge1 && npm install -y --force'
 
       - name: Lint
-        run: ssh staging 'cd challenge1 && npm run lint'
+        run: ssh staging 'cd challenge1 && npm run lint --force'
+
+      - name: prettier
+        run: ssh staging 'cd challenge1 && npm run prettier --force'
 
       - name: Start the app
         timeout-minutes: 1 # Times out after 1 minute
